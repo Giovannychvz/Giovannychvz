@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="blue"> -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="dist/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="dist/css/my-app.css">
+    <link rel="stylesheet" href="dist/css/default.css">
+    <meta http-equiv="Content-Security-Policy" content="img-src 'self' data:; default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.ingeoconsultores.com; font-src 'self' data:"/>
+    <title>Informes - Ingeoconsultores</title>
+</head>
+
+<body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <!-- Panels overlay-->
+    
+    <div id="preloadSplash" class="preloadSplash">
+      <div>
+        <div class="img_logo">
+          <img src="img/logo2.png" alt="">
+        </div>
+        <h1 class="title">Ingeoconsultores</h1>
+        <div class="cargaLoad">
+          <span class="fa fa-spin fa-circle-o-notch"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadSpin"><span class="fa fa-spin fa-circle-o-notch"></span></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-cover">
+      <div class="title-panel">
+        <img src="img/logo2.png" alt="">
+        <h1 class="title">Ingeoconsultores</h1>
+      </div>
+      <div class="list-block">
+        <ul>
+          <li>
+            <a href="#perfil" class="close-panel">
+              <div class="item-content">
+                <div class="item-media"><i class="fa fa-user"></i></div>
+                <div class="item-inner">
+                  <div class="item-title">Perfil</div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a id="btn-informes" href="#inicio" class="close-panel">
+              <div class="item-content">
+                <div class="item-media"><i class="fa fa-files-o"></i></div>
+                <div class="item-inner">
+                  <div class="item-title">Informes</div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <div class="ln_solid"></div>
+          <li>
+            <a href="#" id="btn-logout" class="close-panel">
+              <div class="item-content">
+                <div class="item-media"><i class="fa fa-sign-out"></i></div>
+                <div class="item-inner">
+                  <div class="item-title">Cerrar sesión</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar navbar-primary">
+          <!-- Navbar inner for Index page-->
+          <div data-page="index" id="indexMenu" class="navbar-inner cached">
+          </div>
+          <div data-page="inicio" id="inicioMenu" class="navbar-inner cached">
+            <div class="left sliding">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+            <div class="center">
+                <p>Informes</p>
+            </div>
+          </div>
+          <div data-page="perfil" class="navbar-inner cached">
+            <div class="left sliding">
+              <a href="#" class="back back-white"><i class="fa fa-arrow-left"></i></a>
+            </div>
+            <div class="center">
+              <p>Perfil</p>
+            </div>
+          </div>
+
+          <div data-page="editarPerfil" class="navbar-inner cached">
+            <div class="left sliding">
+              <a href="#" id="btn-cancel-foto" class="back back-white"><i class="fa fa-close"></i></a>
+            </div>
+            <div class="center">
+              <p>Editar perfil</p>
+            </div>
+            <div class="right sliding">
+              <a href="#" id="btn-check-foto" class="back-white"><i class="fa fa-check"></i></a>
+            </div>
+          </div>
+
+          <div data-page="editarPass" class="navbar-inner cached">
+            <div class="left sliding">
+              <a href="#" class="back back-white"><i class="fa fa-arrow-left"></i></a>
+            </div>
+            <div class="center">
+              <p>Editar contraseña</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Index Page-->
+          <div data-page="index" id="index" style="background:#2f4a6d;" class="page cached no-navbar no-swipeback">
+            <div class="page-content">
+              <div class="content-block">
+                <div class="img_logo">
+                  <img style="width:120px;" src="img/logo2.png" alt="">
+                </div>
+                <h1 style="font-size:32px;" class="title">Ingeoconsultores</h1>
+                <form action="?" id="formLogin" method="post">
+                  <div class="list-block form-round">
+                    <div class="item-content">
+                      <div class="item-media"><span class="fa fa-user"></span></div>
+                      <div class="item-inner">
+                        <div class="item-input">
+                            <input id="emailLogin" type="text" name="correo" placeholder="Usuario" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item-content">
+                      <div class="item-media"><span class="fa fa-lock"></span></div>
+                      <div class="item-inner">
+                        <div class="item-input">
+                            <input id="passLogin" type="password" name="password" placeholder="Contraseña" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                  <p><input type="submit" style="background:#1a2e47;border-color:#1a2e47;" class="button button-round active button-big" value="INICIAR SESIÓN"></p>
+                </form>
+                <p>
+                  <a href="#" data-popup=".popup-restart-password" style="background: transparent;border: 1px solid #fff;width: 100%;margin-top: 50px;font-size: 16px;height:36px;line-height: 34px;" class="open-popup button button-fill button-round">Olvide mi contraseña</a>
+                </p>
+                <p>
+                  <a href="#" data-popup=".popup-contact" style="background: #e67e22;width: 100%;margin-top: 30px;font-size: 16px;height:36px;line-height: 34px;" class="open-popup button button-round button-fill">Contactenos</a>
+                </p>
+
+                <div class="content-block">
+                  <div class="row">
+                    <div class="col-50"><a href="#" onclick="window.open('https://www.instagram.com/ingeoconsultores/', '_system'); return false;" class="btn-instagram"><img src="img/instagram-logo.png"></a></div>
+                    <div class="col-50"><a href="#" onclick="window.open('https://api.whatsapp.com/send?phone=573143644287&text=Hola%20Ingeoconsultores', '_system'); return false;" class="btn-whatsapp"><img src="img/whatsapp-logo.png"></a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div data-page="inicio" id="inicio" class="page cached no-swipeback pull-to-refresh-content">
+            <!-- Scrollable page content-->
+            <div id="content-gestor" class="page-content carpetas">
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader"></div>
+                    <div class="pull-to-refresh-arrow"></div>
+                </div>
+                <div style="margin-top: 15px;" id="history-folder">
+                  <ul>
+                    <li><a href="#" data-id="0" class="link-history"><span class="fa fa-home"></span><i class="fa fa-angle-right fa-lg"></i></a></li>
+                  </ul>
+                </div>
+                <div class="list-block" style="margin-top: 15px;">
+                    <ul id="content-folder">
+                    </ul>
+                </div>
+            </div>
+          </div>
+
+          <div data-page="perfil" class="page cached no-swipeback">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <a href="#editarPerfil" class="title-perfil">
+                <div class="photo">
+                  <img class="foto-perfil" id="foto-pf">
+                </div>
+              </a>
+              <div class="list-block list-perfil">
+                <ul>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="fa fa-user"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title"><span>Nombres</span><small id="nombre-perfil"></small></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="fa fa-phone"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title"><span>Telefono</span> <small id="telefono-perfil"></small></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="fa fa-envelope"></i></div>
+                      <div class="item-inner">
+                        <div class="item-title"><span>Correo</span> <small id="correo-perfil"></small></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#editarPass" class="link item-link">
+                      <div class="item-content">
+                        <div class="item-media"><i class="fa fa-lock"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title" id="emailPerfil"><span>Cambiar contraseña</span></div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div data-page="editarPerfil" style="background: #fff;" class="page cached no-swipeback">
+            <div class="page-content">
+              <a id="imgPerfil" style="margin-top: 20px;margin-bottom:30px;display: block;">
+                <div class="photo">
+                  <img class="foto-perfil">
+                </div>
+              </a>
+              <div class="content-block">
+                <p class="buttons-row">
+                  <a href="#" id="tomarFotoPerfil" style="border-color:#246996;color:#246996;" class="button button-round">Tomar foto</a>
+                  <a href="#" id="subirFotoPerfil" style="background:#2980b9;border-color:#246996;" class="button button-round active">Seleccionar imagen</a>
+                </p>            
+              </div>
+            </div>
+          </div>
+
+          <div data-page="editarPass" class="page cached no-swipeback">
+            <div class="page-content">
+              <div class="content-block-title">Cambiar contraseña</div>
+              <form action="?" method="?" id="form-password">
+                <div class="list-block">
+                  <ul>
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Contraseña anterior</div>
+                          <div class="item-input">
+                            <input type="password" placeholder="Anterior" id="passAnt" required>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Contraseña Nueva</div>
+                          <div class="item-input">
+                            <input type="password" placeholder="Nueva" id="passNue" required>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title label">Contraseña Repetir</div>
+                          <div class="item-input">
+                            <input type="password" placeholder="Repetir" id="passRep" required>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="content-block">
+                  <input type="submit" class="button active" style="background: #f39c12;border:none;font-weight: normal;" value="Actualizar información">
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="popup popup-restart-password">
+      <div style="margin-top: 30px;">
+        <div class="content-block-title">Recuperar contraseña</div>
+        <div class="content-block">
+          <p style="margin-top: 100px">
+            Para recuperar tu contraseña por favor contactanos a travez de los siguientes numeros:
+          </p>
+          <p>
+            Fijo:<a href="#" class="callPhone" data-tel="2721418"> 272-14-18</a>
+          </p>
+          <p>
+            Oficina:<a href="#" class="callPhone" data-tel="3143644287"> 314-364-42-87</a>
+          </p>
+          <p style="margin-top: 100px">
+            <a href="#" class="button button-round active button-big close-popup" style="background: #1a2e47;">Cancelar</a>
+          </p>
+        </div>
+      </div> 
+    </div>  
+    <div class="popup popup-contact">
+      <form style="margin-top: 30px;" action="?" method="?" id="form-contact">
+        <div class="content-block-title">Contactanos</div>
+        <div class="list-block">
+          <ul>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">Nombres</div>
+                  <div class="item-input">
+                    <input type="text" id="nombre-contact" placeholder="Tu nombre">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">Correo</div>
+                  <div class="item-input">
+                    <input type="email" id="correo-contact" placeholder="Correo">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="align-top">
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                <div class="item-inner">
+                  <div class="item-title label">Comentario</div>
+                  <div class="item-input">
+                    <textarea id="comentario-contact" placeholder="Comentario ..."></textarea>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="content-block">
+          <div class="row">
+            <div class="col-50">
+              <a href="#" class="button button-big button-red button-fill close-popup" style="background: #ff3b30;">Cancelar</a>
+            </div>
+            <div class="col-50">
+              <input type="submit" class="button button-big button-fill" style="background: #4cd964;" value="Enviar comentario">
+            </div>
+          </div>
+        </div> 
+      </form>
+    </div>  
+
+    <div style="background: #efeff4;" class="login-screen" id="content-encuestas"></div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/velocity.min.js"></script>
+
+    <script>
+      var id_phone = 'pc',
+          //urlEst = "http://192.168.56.1:82/cronograma_2019/cronograma/",
+          //urlEst = "http://localhost:82/cronograma_2019/cronograma/",
+          urlEst = "https://www.ingeoconsultores.com/cronograma/",
+          urlGen = urlEst+"aplicacion/",
+          $$ = Dom7,
+          myApp = '',
+          mainView = '',
+          idUsu = '',
+          totalCarpetas = 0,
+          carpActual = 0,
+          fotoPerfil = '',
+          valdMsj = 0,
+          encuestas = new Array(),
+          encuestaAct = 0,
+          cantidadInformes = 0,
+          diferenciaInformes = 0,
+          updatePassword = 0,
+          debug = true;
+
+      function iniciarApp(){
+        if (!debug) {
+          id_phone = device.uuid;
+        }
+        valdMsj = 1;
+        if(window.localStorage.getItem("stateLogin") == 1 && window.localStorage.getItem("idUsu") != '') {
+          var id_usu = window.localStorage.getItem("idUsu"),
+              url = urlGen+"index.php?action=valLoginCliPH",
+              datos = {
+                id_usu: id_usu,
+                id_phone: id_phone
+              }
+          enviarSolicitud(url, datos, validarSesion, errorConexion);
+        }
+        else{
+          iniciarF7("index");
+        }
+      }
+
+      function validarSesion(datos){
+        $$("#loadSpin").hide();
+        datos = JSON.parse(datos);
+        if(datos == '1'){
+          iniciarF7("inicio");
+          idUsu = window.localStorage.getItem("idUsu");
+          myApp.showPreloader("Espere por favor...");
+          cargarInicio();
+          // cargarUltimoMensaje();
+          cargarCantidadInformes();
+          cargarEncuestas();
+        }
+        else{
+          window.localStorage.removeItem("stateLogin");
+          window.localStorage.removeItem("idUsu");
+          iniciarF7("index");
+        }
+      }
+
+      function iniciarF7(pagina){
+        $$("#"+pagina).removeClass("cached");
+        $$("#"+pagina+"Menu").removeClass("cached");
+        myApp = new Framework7({
+            animateNavBackIcon:true,
+            pushState: true
+        });
+        mainView = myApp.addView('.view-main', {
+            dynamicNavbar: true,
+            domCache: true,
+            url: pagina
+        });
+        functionesInit();
+        ocultarSplash();
+      }
+
+      function cargarValidatePassword(){
+        updatePassword = 1;
+        var url = urlGen+"index.php?action=validateFirstPasswordPH",
+            datos = {
+              id_phone:id_phone,
+              idUsu:idUsu
+            };
+        
+        var container = $$('body');
+        enviarSolicitud(url, datos, function (data) {
+          data = JSON.parse(data);
+
+          if(data[0] == 1 && data[1].update_password == 0){
+            cargarModalFirstPassword();
+          } else {
+            myApp.hidePreloader();
+          }
+        }, errorConexion);
+      }
+
+      function cargarModalFirstPassword() {
+        myApp.modalPassword('Por tu seguridad es necesario que actualices la contraseña asignada. Por favor ingresa una nueva contraseña:', 'Actualizar contraseña', function (password) {
+          var url = urlGen+"index.php?action=updateFirstPasswordPH",
+            datos = {
+              id_phone:id_phone,
+              idUsu:idUsu,
+              password: password
+            };
+
+          if (password == '') {
+            cargarModalFirstPassword();
+            return;
+          }
+        
+          enviarSolicitud(url, datos, function (data) {
+          }, errorConexion);
+
+        }, function () {
+          cargarModalFirstPassword();
+        });
+      }
+
+      function ocultarSplash(){
+        $preloadSplash = document.querySelector("#preloadSplash");
+        $preloadSplashDiv = document.querySelector("#preloadSplash > div");
+        Velocity($preloadSplash, "fadeOut", {duration: 600});
+        Velocity($preloadSplashDiv, {"scale":1.2}, {duration: 600});
+      }
+
+      function iniciarSesion(email, pass){
+        myApp.showPreloader("Espere por favor...");
+        var url = urlGen+"index.php?action=loginCliPH",
+            datos = {
+              email: email,
+              pass: pass,
+              id_phone: id_phone
+            }
+        enviarSolicitud(url, datos, validarLogin, errorConexion);
+      }
+
+      function validarLogin(datos){
+        myApp.hidePreloader();
+        datos = JSON.parse(datos);
+        if(datos[0] == 1){
+          crearSesion(datos[1]);
+        }
+        else{
+          myApp.alert("El usuario o contraseña ingresado es incorrecto.", "Datos incorrectos");
+        }
+      }
+
+
+      function crearSesion(email){
+        window.localStorage.setItem("stateLogin", 1);
+        window.localStorage.setItem("idUsu", email);
+        myApp.showPreloader("Espere por favor...");
+        recargarPagina();
+      }
+
+      function recargarPagina(){
+        mainView.router.back({
+          url:mainView.history[0],
+          force:true
+        });
+        setTimeout(function(){
+          window.location.replace("index.html");
+        }, 500);
+      }
+
+      function cerrarSesion(){
+        myApp.confirm("¿Estas seguro que quieres cerrar sesión?","Cerrar sesión" ,
+          function () {
+            url = urlGen+"index.php?action=logoutPH";
+            window.localStorage.removeItem("stateLogin");
+            window.localStorage.removeItem("idUsu");
+            datos = {
+              id_phone:id_phone
+            }
+            enviarSolicitud(url, datos, recargarPagina, recargarPagina);
+          }
+        );
+      }
+
+      function cargarInicio(){
+        var url = urlGen+"index.php?action=cargarInicioPH",
+            datos = {
+              id: idUsu
+            }
+        
+        eliminarCarpetaVacia();
+        var container = $$('body');
+        myApp.showProgressbar(container, 'orange');        
+        recibirJson(url, datos, cargarArchivosInicio, errorConexion);
+      }
+
+      function cargarArchivosInicio(datos){
+        myApp.hidePreloader();
+        myApp.pullToRefreshDone();
+        myApp.hideProgressbar();
+
+        limpiarContent();
+        if(datos[0] > 0){
+            for (var i = 0; i < datos[1].length; i++) {
+                var idA = datos[1][i].id,
+                    nombreA = datos[1][i].nombre,
+                    tipoA = datos[1][i].tipo,
+                    datoA = datos[1][i].dato;
+
+                if(tipoA == 'carpeta'){
+                    agregarCarpeta(idA, nombreA);
+                }
+                else{
+                    agregarArchivo(idA, nombreA, datoA);
+                }
+            }
+        }
+        else{
+          agregarCarpetaVacia();
+        }
+
+        if (updatePassword == 0) {
+          cargarValidatePassword();
+        }
+      }
+
+      function agregarCarpeta(idCarpeta, nombre){
+        var container = $$("#content-folder");
+        totalCarpetas = totalCarpetas + 1;
+
+        var datos = '<li><a href="#" class="item-link item-content link-folder" data-id="'+idCarpeta+'"><div class="item-media"><i class="icon icon-folder"></i></div><div class="item-inner"><div class="item-title">'+nombre+'</div></div></a></li>';
+        container.append(datos);
+      }
+
+      function agregarArchivo(idArchivo, nombreArchivo, rutaArchivo){
+        var container = $$("#content-folder"),
+            extencion = nombreArchivo.split(".");
+        
+        totalCarpetas = totalCarpetas + 1;
+        extencion = extencion[extencion.length - 1].toLowerCase();
+
+        var icono = (extencion == "pdf")? "file-pdf" : ((extencion == "jpg" || extencion == "png" || extencion == "bmp" || extencion == "gif")? "file-img" : "file");
+
+        var datos = '<li><a href="#" class="item-content download-file" data-url='+rutaArchivo+' data-name="'+nombreArchivo+'"><div class="item-media"><i class="icon icon-'+icono+'"></i></div><div class="item-inner"><div class="item-title">'+nombreArchivo+'</div></div></a></li>';
+
+        container.append(datos);
+      }
+
+      function agregarCarpetaVacia(){
+        eliminarCarpetaVacia();
+        var content = $$("#content-gestor");
+        var data = '<div class="folder-empty"><div class="content-f"><div><span class="fa fa-folder-open"></span></div><h3>Carpeta Vacia</h3></div></div>';
+        content.append(data);
+      }
+
+      function eliminarCarpetaVacia(){
+        var content = $$("#content-gestor .folder-empty");
+        if(content.length > 0){
+          content.remove();
+        }
+      }
+
+      function limpiarContent(){
+        $$("#content-folder").html("");
+      }
+
+      function seleccionarCarpeta(id){
+        eliminarCarpetaVacia();
+
+        url = urlGen+"index.php?action=cargarCarpeta";
+        datos = {
+          id_phone:id_phone,
+          id:id,
+          idUsu:idUsu
+        }
+
+        var container = $$('body');
+        myApp.showProgressbar(container, 'orange');
+
+        enviarSolicitud(url, datos, function(data){
+          limpiarContent();
+          myApp.hideProgressbar();
+          myApp.hidePreloader();
+          myApp.pullToRefreshDone();
+
+          data = JSON.parse(data);
+          if(data[0] == 1){
+            if(data[1] > 0){
+              for (var i = 0; i < data[2].length; i++) {
+                var id = data[2][i].id,
+                    nombre = data[2][i].nombre,
+                    dato1 = data[2][i].dato1,
+                    tipo = data[2][i].tipo,
+                    fecha = data[2][i].fecha;
+
+                if(tipo == "carpeta"){
+                  agregarCarpeta(id, nombre);
+                }
+                else{
+                  agregarArchivo(id, nombre, dato1);
+                }
+              }
+            }
+            else{
+              agregarCarpetaVacia();
+            }
+          }
+        }, recargarPagina);
+      }
+
+      function agregarRuta(id, title){
+        var content = $$("#history-folder ul");
+        var data = '<li><a href="#" class="link-history" data-id="'+id+'">'+title+'<i class="fa fa-angle-right fa-lg"></i></a></li>';
+        content.append(data);
+      }
+
+      $$("#inicio").on("refresh", function(e){
+        if(carpActual == 0){
+          cargarInicio();
+        }
+        else{
+          seleccionarCarpeta(carpActual);
+        }
+      });
+
+      $$("#formLogin").submit(function(e){
+        e.preventDefault();
+        var email = $$("#emailLogin").val(),
+            pass = $$("#passLogin").val();
+        iniciarSesion(email, pass);
+      });
+
+      $$("#emailLogin, #passLogin").focus(function(){
+        var scrollTo = $$(this);
+        setTimeout(function(){
+          var container = $$(".page-content");
+          container.scrollTop(scrollTo.offset().top - container.offset().top - 90, 300);
+        }, 300);
+      });
+
+      $$("#btn-logout").click(function(e){
+        e.preventDefault();
+        cerrarSesion();
+      });
+
+      $$("#btn-share").click(function(e){
+        e.preventDefault();
+        compartirRedes();
+      });
+
+      $$("#btn-contact").click(function(e){
+        e.preventDefault();
+        correoContectenos();
+      });
+
+      $$("#tomarFotoPerfil").click(function(e){
+        e.preventDefault();
+        tomarFoto(function(imagen){
+          $$("#imgPerfil img").attr("src", imagen);
+          fotoPerfil = imagen;
+        }, function(){
+
+        });
+      });
+
+      $$("#subirFotoPerfil").click(function(e){
+        e.preventDefault();
+        seleccionarImagen(function(imagen){
+          $$("#imgPerfil img").attr("src", imagen);
+          fotoPerfil = imagen;
+        }, function(){
+
+        });
+      });
+
+      $$("#imgPerfil").click(function(e){
+        e.preventDefault();
+        var myPhotoBrowserStandalone = myApp.photoBrowser({
+        photos : [$$("#imgPerfil img").attr("src")],
+        ofText : "de",
+        backLinkText : ""
+        });
+        myPhotoBrowserStandalone.open();
+      });
+
+      $$("#btn-cancel-foto").click(function(e){
+        e.preventDefault();
+        fotoPerfil = '';
+        var imagen = $$("#foto-pf").attr("src");
+        $$(".foto-perfil").attr("src", imagen);
+      });
+
+      $$("#content-folder").on("click", ".download-file", function(e){
+        e.preventDefault();
+        var nombre = $$(this).attr("data-name"),
+            url = $$(this).attr("data-url");
+        validarArchivo(nombre, url);
+      });
+
+      $$("#content-folder").on("click", ".link-folder", function(e){
+        e.preventDefault();
+        var id = $$(this).attr("data-id"),
+            title = $$(this).find(".item-title").html();
+        carpActual = id;
+        agregarRuta(id, title);
+        seleccionarCarpeta(id);
+      });
+
+      $$("#history-folder").on("click", ".link-history", function(e){
+        e.preventDefault();
+        var id = $$(this).attr("data-id");
+        $$(this).parent().nextAll().remove();
+        carpActual = id;
+        if(id == 0){
+          cargarInicio();
+        }
+        else{
+          seleccionarCarpeta(id);
+        }
+      });
+
+      $$("#form-password").submit(function(e){
+        e.preventDefault();
+        var passAntiguo = $$("#passAnt").val(),
+            passNuevo = $$("#passNue").val(),
+            passRepetir = $$("#passRep").val();
+
+        if(passNuevo == passRepetir){
+          cambiarPassword(passAntiguo, passNuevo);
+        }
+        else{
+          myApp.alert("La contraseña nueva y la de repetir no coinsiden, por favor corrigela y vuelve a intentarlo", "Las contraseñas no coinsiden");
+        }
+      });
+
+      $$("#content-encuestas").on("submit", "form", function(e){
+        e.preventDefault();
+        var form = $$(this),
+            error = 0,
+            valores = new Array(),
+            idEncuesta = form.attr("data-id"),
+            checkboxs = form.find("input[type=checkbox]"),
+            radios = form.find("input[type=radio]"),
+            campos = form.find("input[type=text], select, input[type=radio]:checked, input[type=checkbox]:checked");
+
+        if(checkboxs.length > 0 || radios.length > 0){
+          var checkSelect = form.find("input[type=checkbox]:checked"),
+              radioSelect = form.find("input[type=checkbox]:checked");
+
+          if(checkSelect.length === 0 || radioSelect.length === 0){
+            myApp.alert("Por favor selecciona al menos una opción en cada uno de los campos", "Campos sin seleccionar");
+            error = 1;
+          } 
+        }
+
+        if(error == 0){
+          campos.each(function(){
+            var input = this;
+            input = $$(input);
+
+            var tipo = input.attr("data-tipo"),
+                pos = input.attr("data-pos"),
+                nombre = input.attr("name"),
+                valor = input.val();
+
+            var existe = 0,
+                keyExis = 0;
+            for (var i = 0; i < valores.length; i++){
+              var valAct = valores[i];
+              if(valAct.pos == pos){
+                existe = 1;
+                keyExis = i;
+              }
+            }
+            if(existe == 1){
+              valores[keyExis].valor.push(valor);
+            }
+            else{
+              var datos = {nombre:nombre, tipo:tipo, pos:pos},
+                  valCamp = (tipo != 4)? valor : new Array(valor);
+              datos.valor = valCamp;
+              valores.push(datos);
+            }
+          });
+
+          valores.sort(function(a, b) { 
+            return a.pos - b.pos;
+          });
+
+          enviarEncuesta(idEncuesta, valores);
+        }
+      });
+
+      $$("#btn-informes").click(function(){
+        var btn = $$(this),
+            texto = btn.find(".item-title");
+
+        if(btn.hasClass("nueva_cantidad")){
+          btn.removeClass("nueva_cantidad");
+          btn.removeAttr("style");
+          cantidadInformes = cantidadInformes + diferenciaInformes;
+          diferenciaInformes = 0;
+        }
+
+        texto.html('Informes');
+      });
+
+      $$("#form-contact").submit(function(e){
+        e.preventDefault();
+        var nombre = $$("#nombre-contact").val(),
+            correo = $$("#correo-contact").val(),
+            comentario = $$("#comentario-contact").val();
+
+        enviarComentario(nombre, correo, comentario);
+      });
+
+      $$(".callPhone").click(function(e){
+        e.preventDefault();
+        var tel = $$(this).attr("data-tel");
+        window.location.href="tel://"+tel;
+      });
+
+      $$("body").on("click", ".view-msj", function(e){
+        e.preventDefault();
+        var fecha = $$(this).attr("data-fecha"),
+            msj = $$(this).attr("data-msj");
+
+        myApp.alert(msj, fecha);
+      });
+
+      function enviarComentario(nombre, correo, comentario){
+        var url = urlGen+"index.php?action=enviarComentario";
+        datos = {
+          nombre:nombre,
+          correo:correo,
+          comentario:comentario
+        }
+        myApp.showPreloader("Por favor espere...");
+        enviarSolicitud(url, datos, function(data){
+          myApp.hidePreloader();
+          if(data == 1){
+            myApp.alert("Gracias por contactarnos, nos pondremos en contacto los mas pronto posible", "Comentario enviado");
+            myApp.closeModal(".popup-contact");
+          }
+          else{
+            myApp.alert("Ocurrio un error al intentar enviar tu comentario. Por favor vuelve a intentarlo", "Ocurrio un error");
+          }
+        }, errorConexion);
+      }
+
+      function cambiarPassword(passAntiguo, passNuevo){
+        var url = urlGen+"index.php?action=cambiarPassword";
+        datos = {
+          id_phone:id_phone,
+          idUsu:idUsu,
+          passAntiguo: passAntiguo,
+          passNuevo: passNuevo
+        }
+        myApp.showPreloader("Por favor espere...");
+        enviarSolicitud(url, datos, function(data){
+          myApp.hidePreloader();
+          data = JSON.parse(data);
+          if(data[0] == 1 && data[1] == 1){
+            myApp.alert("", "Contraseña actualizada");
+            history.back();
+          }
+          else{
+            myApp.alert("La contraseña anterior no coinside, por favor corrigela y vuelve a intentarlo", "La contraseña no coinside");
+          }
+        }, errorConexion);
+      }
+
+
+      function functionesInit(){
+        myApp.onPageInit('perfil', function (page) {
+          cargarPerfil();
+        });
+      }
+
+      function cargarPerfil(){
+        url = urlGen+"index.php?action=cargarPerfil";
+        datos = {
+          id_phone:id_phone,
+          idUsu:idUsu
+        }
+        myApp.showPreloader("Por favor espere...");
+        enviarSolicitud(url, datos, function(data){
+          myApp.hidePreloader();
+          data = JSON.parse(data);
+          if(data[0] == 1){
+            var nombre = data[1].nombre,
+                telefono = data[1].telefono,
+                correo = data[1].correo;
+                imagen = data[1].imagen;
+
+            $$("#nombre-perfil").html(nombre);
+            $$("#telefono-perfil").html(telefono);
+            $$("#correo-perfil").html(correo);
+
+            imagen = (imagen != '')? urlEst+"vista/img/perfil/"+imagen : "img/avatar.png";
+            $$(".foto-perfil").attr("src", imagen);
+          }
+        }, errorConexion);
+      }
+
+      function cargarUltimoMensaje(){
+        var url = urlGen+"index.php?action=cargarUltMsj",
+          datos = {
+            id_phone:id_phone,
+            idUsu:idUsu
+          }
+        enviarSolicitud(url, datos, function(data){
+          data = JSON.parse(data);
+          if(data.length == 2){
+            var fecha = (data[1].fecha).split(" ");
+            agregarNotificacion(fecha[0], data[1].mensaje);
+          }
+          cargarMensajes();
+        }, function(){
+
+        });
+      }
+
+      function cargarCantidadInformes(){
+        var url = urlGen+"index.php?action=cargarCantidadInformes",
+          datos = {
+            id_phone:id_phone,
+            idUsu:idUsu
+          }
+        enviarSolicitud(url, datos, function(data){
+          data = JSON.parse(data);
+          if(data.session == 1){
+            var cantidadAct = data.cantidad,
+                cantidadCarpetas = cantidadAct.carpetas,
+                cantidadArchivos = cantidadAct.archivos,
+                totalInformes = cantidadCarpetas + cantidadArchivos;
+
+
+            if(cantidadInformes == 0){
+              cantidadInformes = totalInformes;
+            }
+            
+            if(totalInformes > cantidadInformes){
+              var diferencia = totalInformes - cantidadInformes;
+
+
+              if(diferencia > diferenciaInformes){
+                diferenciaInformes = diferencia;
+                navigator.vibrate(3000);
+                actualizarCantidadInformes(diferenciaInformes);
+              }
+            }
+
+            setTimeout(cargarCantidadInformes, 5000);
+          }
+        }, function(){
+
+        });
+      }
+
+      function actualizarCantidadInformes(cantidad){
+        var content = $$("#btn-informes"),
+            texto = content.find(".item-title");
+
+        if(!content.hasClass("nueva_cantidad")){
+          content.addClass("nueva_cantidad");
+          content.css({
+            color: "#fff",
+            background: "#e74c3c"
+          })
+        }
+
+        texto.html('<span class="badge bg-lightblue">'+cantidad+'</span> Nuevos Informes');
+      }
+
+      function cargarEncuestas(){
+        var url = urlGen+"index.php?action=cargarEncuestas",
+          datos = {
+            id_phone:id_phone,
+            idUsu:idUsu
+          }
+        enviarSolicitud(url, datos, function(data){
+          data = JSON.parse(data);
+          if(data.session == 1){
+            if(data.dat_encuesta > 0){
+              var cantidad = data.encuestas.length;
+
+              encuestas = data.encuestas;
+              myApp.addNotification({
+                title: "Nueva(s) encuesta(s)",
+                message: '<span style="color:#fff;">Tiene pendiente '+cantidad+' encuesta(s) por responder'
+              });
+              mostrarEncuesta(0);
+            }
+          }
+        }, function(){
+
+        });
+      }
+
+      function mostrarEncuesta(idAct){
+        var container = $$("#content-encuestas"),
+            numero = idAct + 1,
+            encuesta = encuestas[idAct],
+            idEncuesta = encuesta.id,
+            preguntas = encuesta.preguntas,
+            opciones = encuesta.opciones,
+            content = '<div class="view"><div class="page"><div style="background: transparent;" class="page-content login-screen-content"><div class="login-screen-title">Encuesta '+numero+'</div><form data-id="'+idEncuesta+'" data-num="'+encuestaAct+'" action="?" method="post">';
+
+        for (var i = 0; i < preguntas.length; i++){
+          var preguntaAct = preguntas[i],
+              idPregunta = preguntaAct.id,
+              tipo = preguntaAct.tipo,
+              numero = preguntaAct.numero,
+              textPregunta = preguntaAct.pregunta;
+
+          if(tipo == 1){
+            content += '<div class="content-block-title">'+numero+'. '+textPregunta+'</div><div style="margin-top:10px;" class="list-block"><ul style="background: #fff;"><li><div class="item-content"><div class="item-inner"><div class="item-input"><input data-pos="'+numero+'" data-tipo="'+tipo+'" name="input-'+numero+'" required type="text" placeholder="'+textPregunta+'"></div></div></div></li></ul></div>';
+          }
+          else{
+            if(tipo == 2){
+              content += '<div class="content-block-title">'+numero+'. '+textPregunta+'</div><div style="margin-top:10px;" class="list-block"><ul style="background: #fff;"><li><div class="item-content"><div class="item-inner"><div class="item-input"><select data-pos="'+numero+'" data-tipo="'+tipo+'" name="input-'+numero+'">';
+            }
+            else if(tipo == 3 || tipo == 4){
+              content += '<div class="content-block-title">'+numero+'. '+textPregunta+'</div><div style="margin-top:10px;" class="list-block"><ul style="background: #fff;">';
+            }
+            for (var i2 = 0; i2 < opciones.length; i2++){
+              var opcionAct = opciones[i2],
+                  preguntaOpc = opcionAct.pregunta,
+                  textoOpc = opcionAct.texto,
+                  valorOpc = opcionAct.valor;
+
+              if(idPregunta == preguntaOpc){
+                if(tipo == 2){
+                  content += '<option value="'+valorOpc+'">'+textoOpc+'</option>';
+                }
+                else if(tipo == 3){
+                  content += '<li><label class="label-radio item-content"><input type="radio" data-pos="'+numero+'" data-tipo="'+tipo+'" name="input-'+numero+'" value="'+valorOpc+'"><div class="item-inner"><div class="item-title">'+textoOpc+'</div></div></label></li>';
+                }
+                else if(tipo == 4){
+                  content += '<li><label class="label-checkbox item-content"><input type="checkbox" data-pos="'+numero+'" data-tipo="'+tipo+'" name="input-'+numero+'" value="'+valorOpc+'"><div class="item-media"><i class="icon icon-form-checkbox"></i></div><div class="item-inner"><div class="item-title">'+textoOpc+'</div></div></label></li>';
+                }
+              }
+            }
+            if(tipo == 2){
+              content += '</select></div></div></div></li></ul></div>';
+            }
+            else if(tipo == 3 || tipo == 4){
+              content += '</ul></div>';
+            }
+          }
+        }
+
+        content += '<div class="content-block"><button style="width: 100%;" type="submit" class="button button-fill color-green">Enviar encuesta</button></div></form></div></div></div>';
+        container.html(content);
+        myApp.loginScreen();
+      }
+
+      function enviarEncuesta(id, valores){
+        var url = urlGen+"index.php?action=enviarEncuesta",
+            datos = {
+              id_phone:id_phone,
+              idUsu:idUsu,
+              encuesta: id,
+              valores: valores
+            };
+        myApp.showPreloader("Por favor espere...");
+        enviarSolicitud(url, datos, function(data){
+          myApp.hidePreloader();
+          encuestaAct++;
+          myApp.closeModal('.login-screen');
+          setTimeout(function(){
+            myApp.alert("La encuesta se envió satisfactoriamente", "Encuesta enviada");
+            if (typeof encuestas[encuestaAct] !== 'undefined'){
+              mostrarEncuesta(encuestaAct);
+            }
+          }, 500);
+        }, errorConexion);
+      }
+
+      function agregarNotificacion(titulo, mensaje){
+        myApp.addNotification({
+            title: titulo,
+            message: "<a href='#' class='view-msj' data-fecha='"+titulo+"' data-msj='"+mensaje+"'>"+mensaje+"</a>"
+        });
+      }
+
+      function cargarMensajes(){
+        if(valdMsj === 1){
+          var url = urlGen+"index.php?action=cargarMsjs",
+            datos = {
+              id_phone:id_phone,
+              idUsu:idUsu
+            }
+          enviarSolicitud(url, datos, function(data){
+            data = JSON.parse(data);
+            if(data[1] > 0){
+              var fecha = (data[2].fecha).split(" ");
+              agregarNotificacion(fecha[0], data[2].mensaje);
+            }
+            setTimeout(cargarMensajes, 2000);
+          }, function(){
+
+          });
+        }
+      }
+
+      function compartirRedes(){
+        var opciones = {
+          message: 'Pide lo que quieres de tu ciudad y te lo entregan en cuestión de minutos con Enviar. Descárgate la app de http://enviar.com/descargar'
+        }
+
+        window.plugins.socialsharing.shareWithOptions(opciones, finalizarCompartirRedes, errorCompartirRedes);
+      }
+
+      function finalizarCompartirRedes(result){
+        console.log(result);
+      }
+
+      function errorCompartirRedes(data){
+        console.log(data);
+      }
+
+      function correoContectenos(){
+        window.plugins.socialsharing.shareViaEmail('','Contacto',['contacto@enviar.com', 'contacto2@enviar.com']);
+      }
+
+      function validarEmail(email) {
+        var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(!expr.test(email)){
+          return false;
+        }
+        else{
+          return true;
+        }
+      }
+
+      document.addEventListener("deviceready", function(){
+        StatusBar.backgroundColorByHexString("#1c2b3f");
+        document.addEventListener("backbutton", onBackKeyDown);
+        iniciarApp();
+      }, false);
+
+      function onBackKeyDown(e) {
+        var page = myApp.getCurrentView().activePage;
+        if(page.name == "index" || page.name == "inicio"){
+          myApp.confirm('¿Realmente desea salir?', 'Salir',function(){
+            navigator.app.clearHistory();
+            navigator.app.exitApp();
+          });
+        }
+        else{
+          history.back();
+        }
+      }
+
+      function tomarFoto(funWin, funFail){
+        navigator.camera.getPicture(funWin, funFail, 
+          { 
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI
+          }
+        );
+      }
+
+      function seleccionarImagen(funWin, funFail){
+        navigator.camera.getPicture(funWin, funFail,
+          {
+            quality: 50,
+            destinationType : navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+          }
+        );
+      }
+
+
+      $$("#btn-check-foto").click(function(e){
+        e.preventDefault();
+        if(fotoPerfil != ''){
+          var url = urlGen+"index.php?action=cambiarFoto",
+              datos = {
+                id_phone:id_phone,
+                idUsu:idUsu
+              }
+          myApp.showPreloader("Subiendo archivo, por favor espere...");
+          enviarSolicitudImg(fotoPerfil, url, datos, function(data){
+            myApp.hidePreloader();
+            data = JSON.parse(data.response);
+            fotoPerfil = '';
+
+            if(data[0] == 1 && data[1] == 1){
+              $$(".foto-perfil").attr("src", urlEst+"vista/img/perfil/"+data[2]);
+              history.back();
+            }
+            else{
+              if(data[1] == 2){
+                myApp.alert("El archivo que intenta subir tiene un formato incorrecto", "Formato incorrecto");
+              }
+              else if(data[1] == 3){
+                myApp.alert("El archivo que intenta subir excede el limite", "Archivo muy pesado");
+              }
+            } 
+          }, function(){
+            myApp.hidePreloader();
+            myApp.alert("Lo sentimos, no hemos detectado una conexion a internet", "No se detecto conexión a internet");
+            console.log("Error enviar archivo");
+          })
+        }
+        else{
+          myApp.alert("Por favor selecciona una fotografia", "No se selecciono imagen");
+        }
+      });
+
+      function enviarSolicitudImg(imageURI, url, datos, funWin, funFail) {
+          // $$("#loadSpin").show();
+          var options = new FileUploadOptions();
+          options.fileKey="file";
+          options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+          options.mimeType="image/jpeg";
+
+          options.params = datos;
+          options.chunkedMode = true
+
+          var ft = new FileTransfer();
+          console.log(imageURI);
+          ft.upload(imageURI, encodeURI(url), funWin, funFail, options);
+          console.log(ft);
+      }
+
+      function enviarSolicitud(url, datos, funWin, funFail){
+        var method = 'POST';
+        datos.callback = true;
+        $$.ajax({
+              url: url,
+              method: method,
+              crossDomain: true,
+              data: datos,
+              success: funWin,
+              error: funFail
+          });
+      }
+
+      function recibirJson(url, datos, funWin, funFail){
+        datos.callback = true;
+        $$.ajax({
+            url: url,
+            dataType : 'json',
+            crossDomain: true,
+            data: datos,
+            success: funWin,
+            error: funFail
+        });
+      }
+
+      function validarArchivo(nombre, url){
+        window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (fileEntry){
+             //var rutaCel = fileEntry.toURL();
+             //var rutaArchivo = rutaCel+nombre;
+
+            fileEntry.getDirectory("Cordova", {
+                create: true,
+                exclusive: false
+            }, function(dir){
+              var rutaArchivo = dir.nativeURL+nombre;
+              descargarArchivo(rutaArchivo, url);
+            }
+            , function(){
+              console.log("Error");
+            });
+        });
+      }
+
+      function descargarArchivo(nombre, ruta){
+        myApp.showPreloader("Descargando archivo, por favor espere...");
+        var ft = new FileTransfer();
+        ft.download(
+          encodeURI(urlEst+"vista/informes/"+ruta),
+          nombre,
+          function(entry) {
+            myApp.hidePreloader();
+            abriArchivo(nombre);
+          },
+          function(err) {
+            myApp.hidePreloader();
+            console.log(err);
+          }
+        );
+      }
+
+
+
+      function abriArchivo(ruta){
+        var extencion = ruta.split(".");
+        extencion = extencion[extencion.length - 1].toLowerCase();
+
+        var tipo = (extencion == 'pdf')? 'application/pdf' : '';
+        console.log(ruta);
+
+        cordova.plugins.fileOpener2.open(
+            ruta,
+            tipo, 
+            { 
+                error : function(e) { 
+                  console.log(e);
+                    console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
+                },
+                success : function () {
+                    console.log('file opened successfully');                
+                }
+            }
+        );
+      }
+
+      function errorConexion(){
+        $$("#loadSpin").hide();
+        myApp.alert("Lo sentimos, no hemos detectado una conexion a internet", "No se detecto conexión a internet");
+      }
+
+      var normalize = (function() {
+        var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç", 
+            to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+            mapping = {};
+       
+        for(var i = 0, j = from.length; i < j; i++ )
+            mapping[ from.charAt( i ) ] = to.charAt( i );
+       
+        return function( str ) {
+            var ret = [];
+            for( var i = 0, j = str.length; i < j; i++ ) {
+                var c = str.charAt( i );
+                if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                    ret.push( mapping[ c ] );
+                else
+                    ret.push( c );
+            }      
+            return ret.join( '' );
+        }
+      })();
+
+      if (debug) {
+        iniciarApp();
+      }
+    </script>
+</body>
+
+</html>
